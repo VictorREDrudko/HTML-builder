@@ -8,6 +8,7 @@ const pathToFolderCopy = './04-copy-directory/files-copy';
 
 // Создадим асинхронную функцию:
 async function copyDir() {
+  // Создадим папку files-copy, если она еще не существует
   try {
     await fsPromises.mkdir(pathToFolderCopy, {
       recursive: true,
@@ -15,7 +16,7 @@ async function copyDir() {
   } catch (error) {
     console.log(`Error: ${error}`);
   }
-
+  // Копируем файлы из папки files в папку files-copy
   try {
     const files = await fsPromises.readdir(pathToFolder);
     for (const file of files) {
